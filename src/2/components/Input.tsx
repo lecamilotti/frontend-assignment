@@ -1,20 +1,46 @@
-import { FunctionComponent } from "react";
+import React, { useState } from "react";
+import { RiSearchLine, RiCloseCircleLine } from "react-icons/ri";
 
-/*
- * The InputProps interface defines the types for the components props.
- *
- * If you would like to proceed without defining types do the following:
- * const Input: FunctionComponent<any> = (props) => {
- *                                ^^^
- *
- * and remove the InputProps interface
- */
+interface InputProps {
+  onSearchChange: (term: string) => void;
+}
 
-interface InputProps {}
+const Input: React.FC<InputProps> = ({ onSearchChange }) => {
+  const [inputValue, setInputValue] = useState("");
 
-const Input: FunctionComponent<InputProps> = (props) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newTerm = event.target.value;
+    setInputValue(newTerm);
+    onSearchChange(newTerm); // Call the prop function to update search term
+  };
+
+  const clearInput = () => {
+    setInputValue("");
+    onSearchChange(""); // Clear the search term
+  };
+
   return (
-    <div>#Input goes here#</div>
+    <div className="input-container">
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Search countries..."
+      />
+      {inputValue !== "" ? (
+        <div className="icon-container">
+          <i className="clear-icon" onClick={clearInput}>
+            <RiCloseCircleLine />
+          </i>
+        </div>
+      ) : (
+        <div className="icon-container">
+          <i className="search-icon">
+            <RiSearchLine />
+          </i>
+        </div>
+      )}
+    </div>
   );
 };
 

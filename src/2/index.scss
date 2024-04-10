@@ -1,0 +1,148 @@
+.task2 {
+  padding: 20px;
+  background: linear-gradient(200deg, #a7c06e, #f3f7ec);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  .task2-header {
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: "Roboto", sans-serif;
+      color: #fafafa;
+      font-weight: 800;
+    }
+  }
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // add animation to the spinner
+    .lds-ellipsis {
+      display: inline-block;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      // add animation to the spinner
+      animation: infinite .5s linear infinite;
+    }
+  }
+  .input-container {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+
+    input {
+      width: calc(100% - 30px);
+      padding: 15px 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+
+      &::placeholder {
+        /* Style the placeholder text */
+        color: #999; /* Lighter placeholder color for better visibility */
+        opacity: 0.7; /* Set placeholder opacity for a subtle effect */
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid #a3bd67; /* Change border color on focus */
+      }
+    }
+
+    .icon-container {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+
+      .search-icon,
+      .clear-icon {
+        cursor: pointer;
+        font-size: 30px;
+        color: #a3bd67;
+        margin-left: 10px;
+
+        transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+      }
+
+      .clear-icon {
+        color: #ccc;
+      }
+    }
+  }
+
+  .list-container {
+    width: 100%;
+    .table-container {
+      width: 100%;
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table thead {
+        background-color: #f2f2f2;
+      }
+
+      .table th,
+      .table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .table th {
+        background-color: #f2f2f2;
+      }
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .table th {
+      background-color: #f2f2f2;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 10px 20px; /* Increased padding for better readability */
+      margin: 0 5px;
+      border: 1px solid #ddd; /* Using a slightly lighter border color */
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff; /* Setting default background color */
+      text-decoration: none; /* Remove underline on button text */
+      font-weight: bold; /* Emphasize button text slightly */
+      outline: none; /* Remove default button outline */
+    }
+
+    .pagination button:hover {
+      background-color: #f2f2f2; /* Maintain hover background color */
+    }
+
+    .pagination button:disabled {
+      background-color: #eee; /* Dimmed background for disabled buttons */
+      cursor: default; /* Remove pointer cursor for disabled buttons */
+    }
+
+    .pagination span {
+      padding: 10px 20px; /* Increased padding for consistency */
+      margin: 0 5px;
+      color: #333; /* Set page number text color */
+    }
+  }
+}

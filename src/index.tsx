@@ -12,12 +12,14 @@ import {
   useParams,
   Navigate,
 } from "react-router-dom";
+
 import Intro from "./Intro";
 import { NavLink } from "react-router-dom";
 
 import Task1 from "./1";
 import Task2 from "./2";
 import Task3 from "./3";
+
 
 const Menu: FunctionComponent = () => {
   return (
@@ -58,36 +60,39 @@ const Task: FunctionComponent = () => {
   let { id } = useParams<{ id: string }>();
 
   switch (id) {
-      case "1":
-        return (
-          <>
-            <h1>Task 1 - Use styles</h1>
-            <p className="task-description">
-              This task is mainly about <b>styling</b> in ReactJS in order to
-              create a <b>beautiful UI</b>. Use Sass to style the form with
-              interaction feedback such as hover, focus and so on. The goal is to
-              make the form as aesthetically pleasing as possible.
-            </p>
-  
-            <TaskContainer>
-              <Task1 />
-            </TaskContainer>
-          </>
-        );
-      case "2":
+    case "1":
+      return (
+        <>
+          <h1>Task 1 - Use styles</h1>
+          <p className="task-description">
+            This task is mainly about <b>styling</b> in ReactJS in order to
+            create a <b>beautiful UI</b>. Use Sass to style the form with
+            interaction feedback such as hover, focus and so on. The goal is to
+            make the form as aesthetically pleasing as possible.
+          </p>
+
+          <TaskContainer>
+            <div>
+         
+            </div>
+            <Task1 />
+          </TaskContainer>
+        </>
+      );
+    case "2":
       return (
         <>
           <h1>Task 2 - Use component composition</h1>
           <p className="task-description">
-            In this task, use your <b>React knowledge</b> to
-            make a searchable list.
+            In this task, use your <b>React knowledge</b> to make a searchable
+            list.
             <br />
             <br />
-            You must <b>encapsulate</b> the <b>UI</b> parts
-            into <b>small components</b>. This means the Input and List goes
-            into different small components. In order to communicate between the
-            input and the list, the parent component must be used by
-            passing props and managing state.
+            You must <b>encapsulate</b> the <b>UI</b> parts into{" "}
+            <b>small components</b>. This means the Input and List goes into
+            different small components. In order to communicate between the
+            input and the list, the parent component must be used by passing
+            props and managing state.
           </p>
 
           <TaskContainer>
@@ -116,7 +121,8 @@ const Task: FunctionComponent = () => {
             third-party packages if needed.
           </p>
           <p className="task-description">
-            This task is also a great oppertunity for you to show your TypeScript knowledge.
+            This task is also a great oppertunity for you to show your
+            TypeScript knowledge.
           </p>
 
           <TaskContainer>

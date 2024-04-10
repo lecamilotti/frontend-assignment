@@ -1,19 +1,32 @@
-import { FunctionComponent } from "react";
+import React from "react";
 
-/*
- * The ItemProps interface defines the types for the components props.
- *
- * If you would like to proceed without defining types do the following:
- * const Input: FunctionComponent<any> = (props) => {
- *                                ^^^
- *
- * and remove the ItemProps interface
- */
+interface ItemProps {
+  countryName: string;
+  officialStateName: string;
+  alpha2: string;
+  alpha3: string;
+  numericCode: string;
+  internetCctldCode: string;
+}
 
-interface ItemProps {}
-
-const Item: FunctionComponent<ItemProps> = (props) => {
-  return <li>#Item goes here#</li>;
+const Item: React.FC<ItemProps> = ({
+  countryName,
+  officialStateName,
+  alpha2,
+  alpha3,
+  numericCode,
+  internetCctldCode,
+}) => {
+  return (
+    <tr>
+      <td>{countryName}</td>
+      <td>{officialStateName}</td>
+      <td>{alpha2}</td>
+      <td>{alpha3}</td>
+      <td>{numericCode}</td>
+      <td>{internetCctldCode}</td>
+    </tr>
+  );
 };
 
 export default Item;

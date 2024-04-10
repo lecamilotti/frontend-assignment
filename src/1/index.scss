@@ -1,4 +1,59 @@
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-1 {
-  /* Styles goes here */
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  // make the gradient background from top to bottom
+
+  background: linear-gradient(150deg, #a7c06e, #f3f7ec);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .container {
+    padding: 30px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      background: #7ca510;
+      color: white;
+      border: 1px solid #fafafa;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background: #fafafa;
+        border: 1px solid #7ca510;
+        color: #7ca510;
+      }
+
+      &:disabled {
+        background: linear-gradient(150deg, #a7c06e, #f3f7ec);
+        border: 1px solid #ccc;
+        color: #fff;
+        cursor: not-allowed;
+      }
+    }
+  }
 }
