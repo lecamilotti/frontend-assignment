@@ -11,12 +11,12 @@ const Input: React.FC<InputProps> = ({ onSearchChange }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTerm = event.target.value;
     setInputValue(newTerm);
-    onSearchChange(newTerm); // Call the prop function to update search term
+    onSearchChange(newTerm); 
   };
 
   const clearInput = () => {
     setInputValue("");
-    onSearchChange(""); // Clear the search term
+    onSearchChange(""); 
   };
 
   return (

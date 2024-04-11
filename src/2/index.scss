@@ -17,17 +17,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #a3bd67;
+    font-size: 50px;
+  }
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
 
-    // add animation to the spinner
-    .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 40px;
-      height: 40px;
-      // add animation to the spinner
-      animation: infinite .5s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
+
   .input-container {
     margin-bottom: 20px;
     position: relative;
@@ -43,14 +53,13 @@
       transition: border-color 0.2s ease-in-out;
 
       &::placeholder {
-        /* Style the placeholder text */
-        color: #999; /* Lighter placeholder color for better visibility */
-        opacity: 0.7; /* Set placeholder opacity for a subtle effect */
+        color: #999;
+        opacity: 0.7;
       }
 
       &:focus {
         outline: none;
-        border: 1px solid #a3bd67; /* Change border color on focus */
+        border: 1px solid #a3bd67;
       }
     }
 
@@ -64,53 +73,62 @@
 
       .search-icon,
       .clear-icon {
-        cursor: pointer;
         font-size: 30px;
         color: #a3bd67;
         margin-left: 10px;
 
-        transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+        transition: opacity 0.3s ease-in-out;
       }
 
       .clear-icon {
         color: #ccc;
+        cursor: pointer;
       }
     }
   }
 
   .list-container {
     width: 100%;
+    .list-item-info {
+      color: #fafafa;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
     .table-container {
       width: 100%;
+      overflow-x: auto;
+
       .table {
         width: 100%;
         border-collapse: collapse;
       }
-      .table thead {
-        background-color: #f2f2f2;
+
+      .table th {
+        color: #fafafa;
       }
 
       .table th,
       .table td {
-        border: 1px solid #ccc;
-        padding: 8px;
+        border: 1px solid #fafafa;
+        padding: 10px;
         text-align: left;
       }
 
       .table th {
-        background-color: #f2f2f2;
+        background-color: #7ca510;
       }
     }
 
     .table th,
     .table td {
-      border: 1px solid #ccc;
+      border: 1px solid #fafafa;
       padding: 8px;
       text-align: left;
     }
 
     .table th {
-      background-color: #f2f2f2;
+      background-color: #fafafa;
     }
     .pagination {
       display: flex;
@@ -119,30 +137,42 @@
     }
 
     .pagination button {
-      padding: 10px 20px; /* Increased padding for better readability */
+      padding: 10px 20px;
+      width: 100px;
       margin: 0 5px;
-      border: 1px solid #ddd; /* Using a slightly lighter border color */
+      background: #7ca510;
+      color: white;
+      border: 1px solid #fafafa;
       border-radius: 5px;
       cursor: pointer;
-      background-color: #fff; /* Setting default background color */
-      text-decoration: none; /* Remove underline on button text */
-      font-weight: bold; /* Emphasize button text slightly */
-      outline: none; /* Remove default button outline */
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background: #fafafa;
+        border: 1px solid #7ca510;
+        color: #7ca510;
+      }
+      &:disabled {
+        background: linear-gradient(180deg, #a7c06e, #f3f7ec);
+        border: 1px solid #ccc;
+        color: #fff;
+        cursor: not-allowed;
+      }
     }
 
     .pagination button:hover {
-      background-color: #f2f2f2; /* Maintain hover background color */
+      background-color: #f2f2f2;
     }
 
     .pagination button:disabled {
-      background-color: #eee; /* Dimmed background for disabled buttons */
-      cursor: default; /* Remove pointer cursor for disabled buttons */
+      background-color: #eee;
+      cursor: default;
     }
 
     .pagination span {
-      padding: 10px 20px; /* Increased padding for consistency */
+      padding: 10px 20px;
       margin: 0 5px;
-      color: #333; /* Set page number text color */
+      color: #333;
     }
   }
 }

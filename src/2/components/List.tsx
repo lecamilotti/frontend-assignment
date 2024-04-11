@@ -1,5 +1,6 @@
 import React from "react";
-import Item from "./Item"; // Import Item component
+
+import Item from "./Item";
 
 interface Country {
   countryName: string;
@@ -56,7 +57,7 @@ const List: React.FC<ListProps> = ({
 
   return (
     <div className="list-container">
-      <div className="list-header">
+      <div className="list-item-info">
         <p>
           Showing {totalItemsShowed} of {filteredItems.length} countries
         </p>
