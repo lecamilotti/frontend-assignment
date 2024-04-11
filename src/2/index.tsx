@@ -69,7 +69,7 @@ const Task2: React.FC = () => {
     } catch (error) {
       handleError(error as Error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -79,7 +79,7 @@ const Task2: React.FC = () => {
   }, []);
 
   return (
-    <div className="task2">
+    <div id="task-2">
       <div className="task2-header">
         <h1>Country Code List</h1>
       </div>

@@ -53,7 +53,19 @@ const Task1: FunctionComponent = () => {
           .then(() => setLoading(false));
       } else {
         setLoading(false);
-        toast.error("Invalid email or password");
+        toast(
+          `You have entered invalid email or password. Please try again with email: ${mockUsers[0].email} and password: ${mockUsers[0].password}`,
+          {
+            icon: "🔒",
+            style: {
+              borderRadius: "16px",
+              background: "#333",
+              fontSize: "16px",
+              color: "#fff",
+            },
+            duration: 5000,
+          }
+        );
       }
     } catch (error) {
       setLoading(false);
