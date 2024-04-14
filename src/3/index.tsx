@@ -23,36 +23,30 @@ type ColumnType = "Backlog" | "Todo" | "Done";
 export const mockData = {
   cards: [
     {
-      id: "Id - 1",
-      title: "Get UNIwise interview",
-      content: "Keep in touch with the HR for the interview schedule",
-      column: "Done",
-      priority: "high",
-      status: "done",
+      id: "id - 1",
+      title: "Finish the Kanban app other tasks",
+      content:
+        "The kanban app and the other tasks will be a great challenge to work on",
+      column: "Todo",
+      priority: "medium",
+      status: "Todo",
     },
     {
       id: "id - 2",
-      title: "Get into the interview with Sune",
-      content: "It was a great interview, I hope I get the job!",
-      column: "Done",
-      priority: "medium",
-      status: "done",
+      title: "Get a job at UNIwise",
+      content:
+        "I hope UNIwise finds that I am a good match for the position and I get the job :-)",
+      column: "Backlog",
+      priority: "high",
+      status: "Backlog",
     },
     {
       id: "id - 3",
-      title: "Finish the Kanban app and other tasks",
-      content: "The kanban app was a great challenge to work on",
-      column: "Done",
-      priority: "low",
-      status: "done",
-    },
-    {
-      id: "id - 4",
-      title: "Get a job at UNIwise",
-      content: "I hope I get the job at UNIwise",
+      title: "Walk with my dog",
+      content: "Take my dog for a walk in the park as soon as i have free time",
       column: "Backlog",
-      priority: "high",
-      status: "backlog",
+      priority: "low",
+      status: "Backlog",
     },
   ],
 };
