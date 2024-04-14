@@ -3,10 +3,9 @@ import { RiSearchLine, RiCloseCircleLine } from "react-icons/ri";
 
 interface InputProps {
   onSearchChange: (term: string) => void;
-  placeHolder: string;
 }
 
-const Input: React.FC<InputProps> = ({ onSearchChange, placeHolder }) => {
+const SearchInput: React.FC<InputProps> = ({ onSearchChange }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +25,7 @@ const Input: React.FC<InputProps> = ({ onSearchChange, placeHolder }) => {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        placeholder={placeHolder}
+        placeholder="Search tasks..."
       />
       {inputValue !== "" ? (
         <div className="icon-container">
@@ -45,4 +44,4 @@ const Input: React.FC<InputProps> = ({ onSearchChange, placeHolder }) => {
   );
 };
 
-export default Input;
+export default SearchInput;

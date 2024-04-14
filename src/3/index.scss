@@ -1,146 +1,387 @@
-/* DO NOT CHANGE THIS ROOT CLASS NAME*/
+/* DO NOT CHANGE THIS ROOT CLASS NAME */
 #task-3 {
-  --background: linear-gradient(180deg, #a7c06e, #f3f7ec);
-  --text: #363f5f;
-  --text-light: #969cb3;
-  --text-title: #363f5f;
-  --background-light: #f0f2f5;
-  --red: #e83f5b;
-  --green: #33cc95;
-  --blue: #5965e0;
+  --background: linear-gradient(180deg, #fff, #f7f9fa); /* Lighter background */
+  --backgroundStandardUNIwise: linear-gradient(200deg, #a7c06e, #f3f7ec);
+  --text: #333; /* Darker text color */
+  --text-light: #777; /* Lighter text color for inactive elements */
+  --text-lighter: #a59f9f; /* Even lighter text color */
+  --text-title: #333; /* Text color for titles */
+  --background-light: #f2f5f8; /* Slightly lighter panel background */
+  --background-light-green: #a7c06e; /* Light green background */
+  --border: #ddd; /* Border color */
+  --primary: #0052cc; /* Jira blue for accents */
+  --secondary: #2684ff; /* Jira blue for accents */
+  --danger: #d04437; /* Jira red for alerts */
+  --success: #00a82d; /* Jira green for success messages */
+  --warning: #f4b400; /* Jira yellow for warnings */
+  --info: #2684ff; /* Jira blue for informational messages */
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  --highPriority: #d04437;
+  --mediumPriority: #f4b400;
+  --lowPriority: #00a82d;
 
-  section.task-list {
-    background: var(--background);
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  padding: 20px;
+  background: linear-gradient(200deg, #a7c06e, #f3f7ec);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 100%;
 
-    filter: drop-shadow(0px 24px 64px rgba(0, 0, 0, 0.06));
-  }
-
-  .task-list {
-    display: flex;
-    overflow-x: auto; // Enable horizontal scrolling for many tasks
-    width: 100%; // Adjust width as needed
-  }
-
-  .columns {
-    display: flex;
-  }
-
-  .column {
-    flex: 4;
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 1rem;
-    background-color: var(--background-light);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    height: max-content;
-  }
-
-  .column h3 {
-    margin-bottom: 1rem;
-  }
-
-  .column p {
-    color: var(--text-light);
-  }
-
-  .column button {
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: var(--green);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: var(--background-light);
-      color: var(--green);
+  @media only screen and (max-width: 768px) {
+    #task-3 {
+      max-width: 90%; /* Adjust as needed for better responsiveness */
     }
-  }
-
-  .column button.delete {
-    background-color: var(--red);
-
-    &:hover {
-      background-color: var(--background-light);
-      color: var(--red);
-    }
-  }
-
-  .item {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-
-    border-radius: 1rem;
-    background-color: var(--background-light);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    text-align: left;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  // input component styles
-  .input-container {
-    margin-bottom: 20px;
-    position: relative;
-    width: 100%;
-
-    input {
-      width: calc(100% - 30px);
-      padding: 15px 20px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      outline: none;
-      transition: border-color 0.2s ease-in-out;
-
-      &::placeholder {
-        color: #999;
-        opacity: 0.7;
-      }
-
-      &:focus {
-        outline: none;
-        border: 1px solid #a3bd67;
-      }
+    .kanban-board {
+      grid-template-columns: repeat(
+        2,
+        1fr
+      ); /* Adjust columns for smaller screens */
+      gap: 10px;
     }
 
-    .icon-container {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
+    /* Add more styles for further adjustments on smaller screens */
+  }
+
+  @media only screen and (max-width: 480px) {
+    /* Define styles for even smaller screens */
+    #task-3 {
+      max-width: 75%; /* Adjust as needed */
+    }
+    .kanban-board {
+      grid-template-columns: 1fr; /* One column for very small screens */
+    }
+  }
+  .kanban-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .header {
+      margin-top: 20px;
+
+      text-align: center;
+      font-family: "Roboto", sans-serif;
+      color: #fafafa !important;
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    .search-row {
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
 
-      .search-icon,
-      .clear-icon {
-        font-size: 30px;
-        color: #a3bd67;
-        margin-left: 10px;
+      .input-container {
+        margin-bottom: 50px;
+        position: relative;
+        width: 500px;
+        margin: 0 auto;
 
-        transition: opacity 0.3s ease-in-out;
+        input {
+          width: calc(100% - 30px);
+          padding: 15px 20px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          outline: none;
+          transition: border-color 0.2s ease-in-out;
+
+          &::placeholder {
+            color: #999;
+            opacity: 0.7;
+          }
+
+          &:focus {
+            outline: none;
+            border: 1px solid #a3bd67;
+          }
+        }
+
+        .icon-container {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          display: flex;
+          align-items: center;
+
+          .search-icon,
+          .clear-icon {
+            font-size: 30px;
+            color: #a3bd67;
+            margin-left: 10px;
+
+            transition: opacity 0.3s ease-in-out;
+          }
+
+          .clear-icon {
+            color: #ccc;
+            cursor: pointer;
+          }
+        }
+      }
+      .add-button {
+        margin-left: 20px;
+
+        button {
+          margin: auto;
+          width: 50px;
+          height: 50px;
+
+          background-color: #a7c06e;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: filter 0.2s;
+
+          .icon {
+            align-items: center;
+            text-align: center;
+            font-size: 34px;
+            margin-top: 5px;
+          }
+
+          &:hover {
+            // make more shadow on hover
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+            filter: brightness(0.94);
+          }
+        }
+      }
+    }
+
+    .kanban-app {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      min-height: 500px;
+
+      @media only screen and (max-width: 768px) {
+        .kanban-app {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* Adjust columns for smaller screens */
+          gap: 10px;
+        }
+
+        /* Add more styles for further adjustments on smaller screens */
       }
 
-      .clear-icon {
-        color: #ccc;
-        cursor: pointer;
+      @media only screen and (max-width: 480px) {
+        /* Define styles for even smaller screens */
+
+        .kanban-app {
+          grid-template-columns: 1fr; /* One column for very small screens */
+        }
+      }
+
+      .column {
+        background: var(--background-light);
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        width: 240px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @media only screen and (max-width: 1024px) {
+          // Adjusted width for medium screens
+          width: 200px;
+        }
+        @media only screen and (max-width: 900px) {
+          // Adjusted width for small screens
+          width: 180px;
+        }
+
+        @media only screen and (max-width: 840px) {
+          // Adjusted width for smaller screens
+          width: 160px;
+        }
+
+        @media only screen and (max-width: 780px) {
+          // Adjusted width for smaller screens
+          width: 140px;
+        }
+
+        @media only screen and (max-width: 720px) {
+          // Adjusted width for smaller screens
+          width: 120px;
+        }
+        &.column--done {
+          .task-title {
+            content: ""; /* Remove default text content (optional) */
+            text-decoration: line-through;
+          }
+        }
+        .column-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--text-title);
+          border: 1px solid var(--border);
+          border-radius: 5px;
+          padding: 10px;
+          background: var(--background-light-green);
+          color: #fff;
+        }
+
+        .task {
+          padding: 10px;
+          border: 1px solid var(--border);
+          border-radius: 5px;
+          background: var(--backgroundStandardUNIwise);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          transition: filter 0.2s;
+
+          &:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            filter: brightness(0.94);
+          }
+
+          .card-id {
+            font-size: 12px;
+            color: var(--text-light);
+            text-align: right;
+            text-decoration: underline;
+            font-style: italic;
+          }
+
+          .task-priority {
+            width: 100%;
+            height: 35px;
+            display: flex;
+            align-items: center;
+
+            .priority {
+              padding: 5px 10px;
+              border-radius: 5px;
+              font-size: 12px;
+              color: #fff;
+              font-weight: 600;
+              width: calc(100% - 40px); /* Adjusted width for icon + circle */
+              white-space: nowrap;
+              overflow: hidden;
+            }
+
+            .priority.low {
+              background: var(--lowPriority);
+            }
+
+            .priority.medium {
+              background: var(--mediumPriority);
+            }
+
+            .priority.high {
+              background: var(--highPriority);
+            }
+
+            .kebab-menu {
+              transform: translateY(-50%);
+              right: 10px;
+              display: flex;
+              margin-top: 20px;
+
+              gap: 10px;
+
+              // remove default button styles
+              button {
+                margin: auto;
+                width: 25px;
+                height: 25px;
+
+                background-color: #fffa;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                color: black;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: filter 0.2s;
+
+                .icon {
+                  align-items: center;
+                  text-align: center;
+                  font-size: 14px;
+                  padding-right: 20px;
+                }
+
+                &:hover {
+                  // make more shadow on hover
+                  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+                  filter: brightness(0.94);
+                }
+              }
+            }
+          }
+          .task-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap; /* Prevent wrapping to next line */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100% - 10px);
+          }
+
+          .task-description {
+            font-size: 14px;
+            color: var(--text-light);
+            white-space: nowrap; /* Prevent wrapping to next line */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100% - 10px); /* Adjust width based on other elements */
+          }
+        }
+      }
+    }
+  }
+
+  //form to create a task styles
+
+  .create-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+
+    input,
+    select,
+    textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+
+      &:focus {
+        border-color: #a3bd67;
+      }
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+
+    button {
+      background-color: var(--background-light-green);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: filter 0.2s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+      &:hover {
+        filter: brightness(0.94);
       }
     }
   }
