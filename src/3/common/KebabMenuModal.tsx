@@ -1,9 +1,9 @@
-// KebabMenuModal.tsx
+
 import React, { useEffect } from "react";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-import "./index.scss"; // Import the same SCSS file used for Modal component
+import "./index.scss";
 
 interface KebabMenuModalProps {
   isOpen: boolean;

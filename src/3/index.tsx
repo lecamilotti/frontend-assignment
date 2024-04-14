@@ -24,7 +24,7 @@ export const mockData = {
   cards: [
     {
       id: "id - 1",
-      title: "Finish the Kanban app other tasks",
+      title: "Finish the Kanban app and other tasks",
       content:
         "The kanban app and the other tasks will be a great challenge to work on",
       column: "Todo",

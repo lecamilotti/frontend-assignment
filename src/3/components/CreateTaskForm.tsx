@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 interface CreateTaskFormProps {
   onSubmit: (title: string, priority: string, content: string) => void;
   handleModalClose: () => void;
-  initialTitle?: string; // Make it optional
-  initialPriority?: string; // Make it optional
-  initialContent?: string; // Make it optional
+  initialTitle?: string; 
+  initialPriority?: string; 
+  initialContent?: string; 
   onEdit?: () => void;
   newTask?: boolean;
 }
