@@ -24,21 +24,21 @@ export const mockData = {
   cards: [
     {
       id: "id - 1",
-      title: "Finish the Kanban app and other tasks",
-      content:
-        "The kanban app and the other tasks will be a great challenge to work on",
-      column: "Todo",
-      priority: "medium",
-      status: "Todo",
-    },
-    {
-      id: "id - 2",
       title: "Get a job at UNIwise",
       content:
         "I hope UNIwise finds that I am a good match for the position and I get the job :-)",
       column: "Backlog",
       priority: "high",
       status: "Backlog",
+    },
+    {
+      id: "id - 2",
+      title: "Finish the Kanban app and other tasks",
+      content:
+        "The kanban app and the other tasks will be a great challenge to work on",
+      column: "Todo",
+      priority: "medium",
+      status: "Todo",
     },
     {
       id: "id - 3",
@@ -54,7 +54,7 @@ export const mockData = {
 function Task3() {
   const columns: ColumnType[] = ["Backlog", "Todo", "Done"];
   const [cards, setCards] = useState(mockData.cards);
-  const [parent, setParent] = useState<ColumnType | null>(null);
+
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
@@ -82,12 +82,10 @@ function Task3() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(parent);
-
   useEffect(() => {
     localStorage.setItem("kanban_cards", JSON.stringify(cards));
   }, [cards]);
-  console.log(cards);
+
   const handleKebabMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const iconPosition = event.currentTarget.getBoundingClientRect();
     setKebabMenuCoordinates({ x: iconPosition.left, y: iconPosition.bottom });
@@ -156,7 +154,6 @@ function Task3() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
-    setParent(over ? (over as { id: ColumnType }).id : null);
 
     if (over) {
       const draggedCardId = event.active.id;
